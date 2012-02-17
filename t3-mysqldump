@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+dbName = ARGV[0]
+
+blacklist = [
+	"cache_extensions",
+	"cache_hash",
+	"cache_imagesizes",
+	"cache_md5params",
+	"cache_pages",
+	"cache_pagesection",
+	"cache_sys_dmail_stat",
+	"cache_typo3temp_log",
+	"sys_log",
+	"tx_realurl_chashcache",
+	"tx_realurl_errorlog",
+	"tx_realurl_pathcache",
+	"tx_realurl_urldecodecache",
+	"tx_realurl_urlencodecache"
+]
+
+cmd = "mysqldump #{dbName} "
+
+blacklist.each { |table| cmd += "--ignore-table=#{dbName}.#{table} " }
+
+puts cmd
