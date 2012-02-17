@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 dbName = ARGV[0]
+abort "Usage: t3-mysqldump <database name>" if dbName.nil?
 
 blacklist = [
 	"cache_extensions",
